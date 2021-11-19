@@ -6,9 +6,15 @@ import { process } from '@progress/kendo-data-query';
 
 const ManageQuarter = (props) => {
     const editField = "inEdit";
+
+    // const initialDataState = {
+    //     skip: 0,
+    //     take: 10,
+    //   };
+
     const [data, setData] = useState(sampleProducts);
     const [dataState, setDataState ] = useState({skip: 0, take: 10 })
-
+    //const [page, setPage] = React.useState(initialDataState);
     const generateId = data => data.reduce((acc, current) => Math.max(acc, current.ProductID), 0) + 1;
 
     const removeItem = (data, item) => {
@@ -89,6 +95,10 @@ const ManageQuarter = (props) => {
     const cancelCurrentChanges = () => {
         setData([...sampleProducts]);
     }
+
+    // const pageChange = (event) => {
+    //     setPage(event.page);
+    //   };
     let CommandCell = MyCommandCell({
         edit: enterEdit,
         remove: remove,
@@ -101,7 +111,9 @@ const ManageQuarter = (props) => {
 
         editField: editField
     });
+
     const hasEditedItem = data.some(p => p.inEdit);
+
     return (
         <div className="container-fluid">
             <div className='row my-4'>
@@ -110,10 +122,12 @@ const ManageQuarter = (props) => {
                         data={process(data, dataState)}
                         onItemChange={itemChange}
                         editField={editField}
-                        // pageable // uncomment to enable paging
+                        take={10}
+                        pageable // uncomment to enable paging
+                        //onPageChange={pageChange}
                         // sortable // uncomment to enable sorting
                         // filterable // uncomment to enable filtering
-                        // onDataStateChange={(e) => setDataState(e.data)} // uncomment to enable data operations
+                         onDataStateChange={(e) => setDataState(e.data)} // uncomment to enable data operations
                         // {...dataState} // uncomment to enable data operations
                     >
                         <GridToolbar>
@@ -141,12 +155,6 @@ const ManageQuarter = (props) => {
                         <Column cell={CommandCell} width="240px" />
                     </Grid>
                 </div>
-                {/* <div className='col-12 col-lg-3 mt-3 mt-lg-0'>
-                    <h3>KendoReact Grid</h3>
-                    <p>The KendoReact Data Grid (Table) provides 100+ ready-to-use features covering everything from paging, sorting, filtering, editing, and grouping to row and column virtualization, export to PDF and Excel and accessibility.</p>
-                    <p>For documentation and demos of all available Grid features (filtering, sorting, paging, editing etc), please visit the <a href="https://www.telerik.com/kendo-react-ui/components/grid/?utm_medium=product&utm_source=vs&utm_campaign=kendo-ui-react-branding-vs-ext">KendoReact Grid documentation page.</a> </p>
-                </div> */}
-            {/* </div> */}
         </div>
     );
 }
