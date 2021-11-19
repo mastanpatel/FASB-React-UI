@@ -3,6 +3,7 @@ import { sampleProducts } from '../common/sample-products';
 import { MyCommandCell } from './myCommandCell.jsx';
 import { Grid, GridColumn as Column, GridToolbar } from '@progress/kendo-react-grid';
 import { process } from '@progress/kendo-data-query';
+import { sampleQuarters } from '../common/sample-quarters';
 
 const ManageQuarter = (props) => {
     const editField = "inEdit";
@@ -12,13 +13,14 @@ const ManageQuarter = (props) => {
     //     take: 10,
     //   };
 
-    const [data, setData] = useState(sampleProducts);
+    //const [data, setData] = useState(sampleProducts);
+    const [data, setData] = useState(sampleQuarters);
     const [dataState, setDataState ] = useState({skip: 0, take: 10 })
     //const [page, setPage] = React.useState(initialDataState);
-    const generateId = data => data.reduce((acc, current) => Math.max(acc, current.ProductID), 0) + 1;
+    const generateId = data => data.reduce((acc, current) => Math.max(acc, current.QuarterID), 0) + 1;
 
     const removeItem = (data, item) => {
-        let index = data.findIndex(p => p === item || item.ProductID && p.ProductID === item.ProductID);
+        let index = data.findIndex(p => p === item || item.QuarterID && p.QuarterID === item.QuarterID);
         if (index >= 0) {
             data.splice(index, 1);
         }
@@ -27,7 +29,7 @@ const ManageQuarter = (props) => {
 
     const enterEdit = (dataItem) => {
         setData(data.map(item =>
-            item.ProductID === dataItem.ProductID ?
+            item.QuarterID === dataItem.QuarterID ?
                 { ...item, inEdit: true } : item
         ));
     }
@@ -36,15 +38,15 @@ const ManageQuarter = (props) => {
 
         const newData = [...data];
         removeItem(newData, dataItem);
-        removeItem(sampleProducts, dataItem);
+        removeItem(sampleQuarters, dataItem);
         setData([...newData]);
     }
 
     const add = (dataItem) => {
         dataItem.inEdit = undefined;
-        dataItem.ProductID = generateId(sampleProducts);
+        dataItem.QuarterID = generateId(sampleQuarters);
 
-        sampleProducts.unshift(dataItem);
+        sampleQuarters.unshift(dataItem);
         setData([...data])
     }
 
@@ -60,20 +62,20 @@ const ManageQuarter = (props) => {
         const updatedItem = { ...dataItem, inEdit: undefined };
 
         updateItem(newData, updatedItem);
-        updateItem(sampleProducts, updatedItem);
+        updateItem(sampleQuarters, updatedItem);
 
         setData(newData);
     }
 
     const cancel = (dataItem) => {
-        const originalItem = sampleProducts.find(p => p.ProductID === dataItem.ProductID);
-        const newData = data.map(item => item.ProductID === originalItem.ProductID ? originalItem : item);
+        const originalItem = sampleQuarters.find(p => p.QuarterID === dataItem.QuarterID);
+        const newData = data.map(item => item.QuarterID === originalItem.QuarterID ? originalItem : item);
 
         setData(newData);
     }
 
     const updateItem = (data, item) => {
-        let index = data.findIndex(p => p === item || (item.ProductID && p.ProductID === item.ProductID));
+        let index = data.findIndex(p => p === item || (item.QuarterID && p.QuarterID === item.QuarterID));
         if (index >= 0) {
             data[index] = { ...item };
         }
@@ -81,7 +83,7 @@ const ManageQuarter = (props) => {
 
     const itemChange = (event) => {
         const newData = data.map(item =>
-            item.ProductID === event.dataItem.ProductID ?
+            item.QuarterID === event.dataItem.QuarterID ?
                 { ...item, [event.field]: event.value } : item
         );
         setData(newData);
@@ -93,7 +95,7 @@ const ManageQuarter = (props) => {
     }
 
     const cancelCurrentChanges = () => {
-        setData([...sampleProducts]);
+        setData([...sampleQuarters]);
     }
 
     // const pageChange = (event) => {
@@ -127,7 +129,7 @@ const ManageQuarter = (props) => {
                         //onPageChange={pageChange}
                         // sortable // uncomment to enable sorting
                         // filterable // uncomment to enable filtering
-                         onDataStateChange={(e) => setDataState(e.data)} // uncomment to enable data operations
+                         onDataStateChange={(e) => setDataState(e.dataState)} // uncomment to enable data operations
                         // {...dataState} // uncomment to enable data operations
                     >
                         <GridToolbar>
@@ -148,10 +150,16 @@ const ManageQuarter = (props) => {
                     </button>
                             )}
                         </GridToolbar>
-                        <Column field="ProductID" title="Id" width="50px" editable={false} />
-                        <Column field="ProductName" title="Product Name" width="250px"/>
-                        <Column field="UnitsInStock" title="Units" width="150px" editor="numeric" />
-                        <Column field="Discontinued" title="Discontinued" editor="boolean" />
+                        <Column field="QuarterID" title="Id" width="50px" editable={false} />
+                        <Column field="QuarterName" title="Quarter Name" width="250px"/>
+                        <Column field="StartDate" title="Start Date" width="150px" editor="date"  editable={false} format="{0: yyyy-MM-dd HH:mm:ss}" />
+                        <Column field="EndDate" title="End Date" width="150px" editor="date"  editable={false}/>
+                        <Column field="bonds" title="bonds" width="150px" editor="numeric" editable={true}/>
+                        <Column field="Deals" title="Deals" width="150px" editor="numeric" />
+                        <Column field="Runtimestamp" title="Runtimestamp" width="150px" editor="date"  editable={false}/>
+                        <Column field="ChangeComment" title="Change Comment" width="150px" editor="text" />
+                        <Column field="CreatedBy" title="Created By" width="150px" editor="text" />
+                       <Column field="CreatedDate" title="Created Date" width="150px" editor="date"  editable={false}/>
                         <Column cell={CommandCell} width="240px" />
                     </Grid>
                 </div>
