@@ -9,10 +9,13 @@ const MenuNavContainer = (props) => {
         history.push(event.item.data.route);
     }
     return (
-        <Menu onSelect={onSelect}>
+        <Menu onSelect={onSelect} openOnClick={true}> 
             {/* <MenuItem text="Home" data={{ route: 'ManageQuarter' }}/>  */}
             <MenuItem text="Manage Quarter" data={{ route: '/ManageQuarter' }}/>
-            <MenuItem text="Input Wizard" data={{ route: '/InputWizard' }}/>
+            <MenuItem text="Input Wizard" data={{ route: '/InputWizard' }}>
+                <MenuItem text="WAC IO" data={{ route: '/InputWizard' }}/>
+                <MenuItem text="PEZ Bonds" data={{ route: '/InputWizard' }}/>
+            </MenuItem>
             <MenuItem text="Inventory" data={{ route: '/Inventory' }}/>
             <MenuItem text="Control" data={{ route: '/Control' }}/>
             <MenuItem text="Reports" data={{ route: '/Reports' }}/>
