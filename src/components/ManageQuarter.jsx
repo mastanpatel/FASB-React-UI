@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { sampleProducts } from '../common/sample-products';
+//import { sampleProducts } from '../common/sample-products';
 import { MyCommandCell } from './myCommandCell.jsx';
 import { Grid, GridColumn as Column, GridToolbar } from '@progress/kendo-react-grid';
 import { process } from '@progress/kendo-data-query';
@@ -150,14 +150,14 @@ const ManageQuarter = (props) => {
                     </button>
                             )}
                         </GridToolbar>
-                        <Column field="QuarterID" title="Id" width="50px" editable={false} />
-                        <Column field="QuarterName" title="Quarter Name" width="250px"/>
+                        {/* <Column field="QuarterID" title="Id" width="150px" editable={false} isAccessible = {false}/> */}
+                        <Column field="QuarterName" title="Quarter Name" width="150px"/>
                         <Column field="StartDate" title="Start Date" width="150px" editor="date"  editable={false} format="{0: yyyy-MM-dd HH:mm:ss}" />
                         <Column field="EndDate" title="End Date" width="150px" editor="date"  editable={false}/>
-                        <Column field="bonds" title="bonds" width="150px" editor="numeric" editable={true}/>
-                        <Column field="Deals" title="Deals" width="150px" editor="numeric" />
+                        <Column field="bonds" title="bonds" width="100px" editor="numeric" editable={true}/>
+                        <Column field="Deals" title="Deals" width="100px" editor="numeric" />
                         <Column field="Runtimestamp" title="Runtimestamp" width="150px" editor="date"  editable={false}/>
-                        <Column field="ChangeComment" title="Change Comment" width="150px" editor="text" />
+                        <Column field="ChangeComment" title="Change Comment" width="250px" editor="text" />
                         <Column field="CreatedBy" title="Created By" width="150px" editor="text" />
                        <Column field="CreatedDate" title="Created Date" width="150px" editor="date"  editable={false}/>
                         <Column cell={CommandCell} width="240px" />

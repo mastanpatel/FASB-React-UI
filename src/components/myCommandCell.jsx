@@ -5,7 +5,9 @@ export function MyCommandCell({ edit, remove, add, update, discard, cancel, edit
         render() {
             const { dataItem } = this.props;
             const inEdit = dataItem[editField];
-            const isNewItem = dataItem.ProductID === undefined;
+            //const inEdit = editField;
+            const isNewItem = dataItem.QuarterID === undefined;
+            //const isNewItem = false;
 
             return inEdit ? (
                 <td className="k-command-cell">
