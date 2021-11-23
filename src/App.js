@@ -14,13 +14,25 @@ function App() {
   return (
     <Router>
         <div className="content">
-          <Header projectName={'FASB 167'} />
-          <Route exact path="/" component={ManageQuarter} /> 
-          <Route path = "/ManageQuarter" component={ManageQuarter} />
-          <Route path = "/InputWizard" component={InputWizard} />
-          <Route path = "/Inventory" component={Inventory} />
-          <Route path = "/Control" component={Control} />
-          <Route path = "/Reports" component={Reports} />
+        <div className='logoBar'> 
+          {/* <div className="d-flex"> */}
+              <div className='project-name d-flex'>
+                  <span className="mx-0 my-auto logo">
+                      FASB 167
+                  </span>
+              </div>
+            {/* </div>  */}
+          </div>
+          <div className="main-content">
+            <Header projectName={'FASB 167'} />
+            <div class="vl"></div>
+            <Route exact path="/" component={ManageQuarter} /> 
+            <Route path = "/ManageQuarter" component={ManageQuarter} />
+            <Route path = "/InputWizard" component={InputWizard} />
+            <Route path = "/Inventory" component={Inventory} />
+            <Route path = "/Control" component={Control} />
+            <Route path = "/Reports" component={Reports} />
+          </div>
         </div>
         <div className="footer">
           <Footer />

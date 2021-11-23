@@ -7,14 +7,14 @@ import React from 'react';
 const Footer = (props) => {
     return (
         <div className="container-fluid">
-            <div className='d-flex'>
+            {/* <div className='d-flex'> */}
                  <div>
                 {/* <div className='mb-2 links'>
                     <a href="https://www.telerik.com/purchase/license-agreement/progress-kendoreact?utm_medium=product&utm_source=vs&utm_campaign=kendo-ui-react-branding-vs-ext">License Agreement</a>
                 </div> */}
-                <div className='copyright'>
-                    Copyright © 2021 Techxotica.com. All Rights Reserved.
-                </div>
+                    <div className='copyright'>
+                        Copyright © 2021 Techxotica.com. All Rights Reserved.
+                    </div>
                 </div>
                 {/* <div className='d-flex ml-auto'>
                     <div className="social">
@@ -24,7 +24,7 @@ const Footer = (props) => {
                     <a href="https://www.linkedin.com/showcase/telerik/"><img src={LinkedinIcon} alt="linkedin" /></a>
                     </div>
                 </div> */}
-            </div>
+            {/* </div> */}
         </div>
     )
 }
