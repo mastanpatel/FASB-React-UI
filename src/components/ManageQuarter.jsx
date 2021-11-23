@@ -156,10 +156,10 @@ const ManageQuarter = (props) => {
                         <Column field="EndDate" title="End Date" width="150px" editor="date"  editable={false}/>
                         <Column field="bonds" title="bonds" width="100px" editor="numeric" editable={true}/>
                         <Column field="Deals" title="Deals" width="100px" editor="numeric" />
-                        <Column field="Runtimestamp" title="Runtimestamp" width="150px" editor="date"  editable={false}/>
-                        <Column field="ChangeComment" title="Change Comment" width="250px" editor="text" />
+                        <Column field="BusinessRuleAppyTimeStamp" title="Runtimestamp" width="150px" editor="date"  editable={false}/>
+                        <Column field="InputChangeComment" title="Change Comment" width="250px" editor="text" />
                         <Column field="CreatedBy" title="Created By" width="150px" editor="text" />
-                       <Column field="CreatedDate" title="Created Date" width="150px" editor="date"  editable={false}/>
+                       <Column field="CreateTimeStamp" title="Created Date" width="150px" editor="date"  editable={false}/>
                         <Column cell={CommandCell} width="240px" />
                     </Grid>
                 </div>
