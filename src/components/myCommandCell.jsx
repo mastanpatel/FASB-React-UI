@@ -32,14 +32,14 @@ export function MyCommandCell({ edit, remove, add, update, discard, cancel, edit
                     >
                         Edit
                     </button>
-                    <button
+                    {/* <button
                         className="k-button k-grid-remove-command"
                         onClick={() =>
                             remove(dataItem)
                         }
                     >
                         Remove
-                    </button>
+                    </button> */}
                 </td>
             );
         }

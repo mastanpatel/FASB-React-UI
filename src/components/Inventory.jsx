@@ -110,11 +110,11 @@ const Inventory = (props) => {
                         data={process(data, dataState)}
                         onItemChange={itemChange}
                         editField={editField}
-                        // pageable // uncomment to enable paging
+                         pageable // uncomment to enable paging
                         // sortable // uncomment to enable sorting
                         // filterable // uncomment to enable filtering
-                        // onDataStateChange={(e) => setDataState(e.data)} // uncomment to enable data operations
-                        // {...dataState} // uncomment to enable data operations
+                         onDataStateChange={(e) => setDataState(e.dataState)} // uncomment to enable data operations
+                         {...dataState} // uncomment to enable data operations
                     >
                         <GridToolbar>
                             <button

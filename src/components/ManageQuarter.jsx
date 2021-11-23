@@ -116,6 +116,8 @@ const ManageQuarter = (props) => {
 
     const hasEditedItem = data.some(p => p.inEdit);
 
+
+
     return (
         <div className="container-fluid">
             <div className='row my-4'>
@@ -151,16 +153,90 @@ const ManageQuarter = (props) => {
                             )}
                         </GridToolbar>
                         {/* <Column field="QuarterID" title="Id" width="150px" editable={false} isAccessible = {false}/> */}
-                        <Column field="QuarterName" title="Quarter Name" width="150px"/>
-                        <Column field="StartDate" title="Start Date" width="150px" editor="date"  editable={false} format="{0: yyyy-MM-dd HH:mm:ss}" />
-                        <Column field="EndDate" title="End Date" width="150px" editor="date"  editable={false}/>
-                        <Column field="bonds" title="bonds" width="100px" editor="numeric" editable={true}/>
-                        <Column field="Deals" title="Deals" width="100px" editor="numeric" />
-                        <Column field="BusinessRuleAppyTimeStamp" title="Runtimestamp" width="150px" editor="date"  editable={false}/>
-                        <Column field="InputChangeComment" title="Change Comment" width="250px" editor="text" />
-                        <Column field="CreatedBy" title="Created By" width="150px" editor="text" />
-                       <Column field="CreateTimeStamp" title="Created Date" width="150px" editor="date"  editable={false}/>
-                        <Column cell={CommandCell} width="240px" />
+                        <Column field="QuarterName" title="Quarter Name" width="120px"/>
+                        <Column field="StartDate" title="Start Date" editor="date"  editable={false} width="140px" format="{0: yyyy-MM-dd HH:mm:ss}" />
+                        <Column field="EndDate" title="End Date" editor="date"  width="140px"  editable={false}/>
+                        <Column field="bonds" title="Bonds" editor="numeric" width="90px" editable={true}/>
+                        <Column field="Deals" title="Deals" width="90px" editor="numeric" />
+                        <Column field="BusinessRuleAppyTimeStamp" title="Runtimestamp" editor="date"  width="140px" editable={false}/>
+                        <Column field="InputChangeComment" title="Comment" editor="text" />
+                        <Column field="CreatedBy" title="Created By"  width="120px" editor="text" className="leftAlign" />
+                        <Column field="CreateTimeStamp" title="Created Date" editor="date"   width="140px" editable={false}/>
+                        <Column
+                                field="Rules"
+                                title="Business Rule"
+                                width="150px"
+                                cell={(props) => {
+                                    let field = props.field || "";
+                                    return (
+                                    <td>
+                                        <button className="k-primary k-button">
+                                        Apply Rules?
+                                        </button>
+                                        {/* <input
+                                        disabled={false}
+                                        type="checkbox"
+                                        checked={props.dataItem[field]}
+                                        /> */}
+                                    </td>
+                                    );
+                                }}
+                                />
+                        <Column
+                                field="Rollforward"
+                                title="Rollforward"
+                                width="150px"
+                                cell={(props) => {
+                                   
+                                    return (
+                                    <td>
+                                        <button className="k-primary k-button">
+                                        Rollforward
+                                        </button>
+                                        {/* <input
+                                        disabled={false}
+                                        type="checkbox"
+                                        checked={props.dataItem[field]}
+                                        /> */}
+                                    </td>
+                                    );
+                                }}
+                                />
+                        <Column
+                                field="Discontinued"
+                                title="Lock?"
+                                width="70px"
+                                cell={(props) => {
+                                    let field = props.field || "";
+                                    return (
+                                    <td>
+                                        <input
+                                        disabled={false}
+                                        type="checkbox"
+                                        checked={props.dataItem[field]}
+                                        />
+                                    </td>
+                                    );
+                                }}
+                                />
+                        <Column
+                                field="Discontinued"
+                                title=" Final Lock?"
+                                width="70px"
+                                cell={(props) => {
+                                    let field = props.field || "";
+                                    return (
+                                    <td>
+                                        <input
+                                        disabled={false}
+                                        type="checkbox"
+                                        checked={props.dataItem[field]}
+                                        />
+                                    </td>
+                                    );
+                                }}
+                                />
+                        {/* <Column cell={CommandCell} /> */}
                     </Grid>
                 </div>
         </div>
