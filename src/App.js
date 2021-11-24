@@ -15,13 +15,16 @@ function App() {
     <Router>
         <div className="content">
         <div className='logoBar'> 
-          {/* <div className="d-flex"> */}
               <div className='project-name d-flex'>
                   <span className="mx-0 my-auto logo">
                       FASB 167
                   </span>
               </div>
-            {/* </div>  */}
+              <div>
+                  <span>
+                      Welcome Mastan!
+                  </span>
+              </div>
           </div>
           <div className="main-content">
             <Header projectName={'FASB 167'} />

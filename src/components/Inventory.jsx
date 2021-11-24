@@ -146,11 +146,31 @@ const Inventory = (props) => {
                         <Column field="StartDate" title="StartDate"/>
                         <Column field="EndDate" title="EndDate"/>
                         <Column field="CCTrackingDealID" title="CCTrackingDealID"/>*/}
-                        <Column field="longDealName" title="Deal Name"/>
-                        <Column field="CurrentControllingClass" title="Class"/>
+                        <Column field="longDealName" title="Deal Name" width="190px"/>
+                        <Column field="CurrentControllingClass" title="Class" width="80px"/>
                         <Column field="CurrentControllingCusip" title="Cusip"/>
+                        <Column field="Consolidate" title="Consolidate" width="150px"/>
+                        <Column
+                                field="Rules"
+                                title="Edit"
+                                width="150px"
+                                cell={(props) => {
+                                   // let field = props.field || "";
+                                    return (
+                                    <td>
+                                        <button className="k-primary k-button">
+                                        Edit
+                                        </button>
+                                        {/* <input
+                                        disabled={false}
+                                        type="checkbox"
+                                        checked={props.dataItem[field]}
+                                        /> */}
+                                    </td>
+                                    );
+                                }}
+                                />
                         <Column field="CCTrackingComment" title="Comment" width="300px"/>
-                        <Column field="Consolidate" title="Consolidate"/>
                         <Column field="CreateTimeStamp" title="CreateTimeStamp"/>
                         <Column field="CreatedBy" title="CreatedBy"/>
                         <Column field="ModifyTimeStamp" title="ModifyTimeStamp"/>

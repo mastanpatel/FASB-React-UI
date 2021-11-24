@@ -14,7 +14,9 @@ const MenuNavContainer = (props) => {
             <MenuItem text="Manage Quarter" data={{ route: '/ManageQuarter' }}/>
             <MenuItem text="Input Wizard" data={{ route: '/InputWizard' }}>
                 <MenuItem text="WAC IO" data={{ route: '/InputWizard' }}/>
-                <MenuItem text="PEZ Bonds" data={{ route: '/InputWizard' }}/>
+                <MenuItem text="PEZ Bonds" data={{ route: '/InputWizard' }} >
+                    <MenuItem text="PEZ Bonds" data={{ route: '/InputWizard' }}/>
+                </MenuItem>
             </MenuItem>
             <MenuItem text="Inventory" data={{ route: '/Inventory' }}/>
             <MenuItem text="Control" data={{ route: '/Control' }}/>
