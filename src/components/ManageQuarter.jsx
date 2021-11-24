@@ -158,10 +158,41 @@ const ManageQuarter = (props) => {
                         <Column field="EndDate" title="End Date" editor="date"  width="140px"  editable={false}/>
                         <Column field="bonds" title="Bonds" editor="numeric" width="90px" editable={true}/>
                         <Column field="Deals" title="Deals" width="90px" editor="numeric" />
-                        <Column field="BusinessRuleAppyTimeStamp" title="Runtimestamp" editor="date"  width="140px" editable={false}/>
-                        <Column field="InputChangeComment" title="Comment" editor="text" />
-                        <Column field="CreatedBy" title="Created By"  width="120px" editor="text" className="leftAlign" />
-                        <Column field="CreateTimeStamp" title="Created Date" editor="date"   width="140px" editable={false}/>
+                        <Column
+                                field="Discontinued"
+                                title="Lock?"
+                                width="70px"
+                                cell={(props) => {
+                                    let field = props.field || "";
+                                    return (
+                                    <td>
+                                        <input
+                                        disabled={false}
+                                        type="checkbox"
+                                        checked={props.dataItem[field]}
+                                        />
+                                    </td>
+                                    );
+                                }}
+                                />
+                        <Column
+                                field="Discontinued"
+                                title=" Final Lock?"
+                                width="105px"
+                                
+                                cell={(props) => {
+                                    let field = props.field || "";
+                                    return (
+                                    <td>
+                                        <input
+                                        disabled={false}
+                                        type="checkbox"
+                                        checked={props.dataItem[field]}
+                                        />
+                                    </td>
+                                    );
+                                }}
+                                />
                         <Column
                                 field="Rules"
                                 title="Business Rule"
@@ -202,40 +233,11 @@ const ManageQuarter = (props) => {
                                     );
                                 }}
                                 />
-                        <Column
-                                field="Discontinued"
-                                title="Lock?"
-                                width="70px"
-                                cell={(props) => {
-                                    let field = props.field || "";
-                                    return (
-                                    <td>
-                                        <input
-                                        disabled={false}
-                                        type="checkbox"
-                                        checked={props.dataItem[field]}
-                                        />
-                                    </td>
-                                    );
-                                }}
-                                />
-                        <Column
-                                field="Discontinued"
-                                title=" Final Lock?"
-                                width="70px"
-                                cell={(props) => {
-                                    let field = props.field || "";
-                                    return (
-                                    <td>
-                                        <input
-                                        disabled={false}
-                                        type="checkbox"
-                                        checked={props.dataItem[field]}
-                                        />
-                                    </td>
-                                    );
-                                }}
-                                />
+                        <Column field="BusinessRuleAppyTimeStamp" title="Runtimestamp" editor="date"  width="140px" editable={false}/>
+                        <Column field="InputChangeComment" title="Comment" editor="text" />
+                        <Column field="CreatedBy" title="Created By"  width="120px" editor="text" className="leftAlign" />
+                        <Column field="CreateTimeStamp" title="Created Date" editor="date"   width="140px" editable={false}/>
+                       
                         {/* <Column cell={CommandCell} /> */}
                     </Grid>
                 </div>

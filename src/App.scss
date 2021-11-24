@@ -79,6 +79,10 @@ body {
   opacity: 1;
 }
 
+.row {
+  margin: auto;
+}
+
 .sub-header {
   text-align: center;
   font-weight: 400;
@@ -263,6 +267,7 @@ td.rightAlign {
 
 
 .vl {
-  border-left: 1px solid black;
+  border-left: 1px solid #0000004a;
   padding: 1px;
+  height: 890px;
 }
