@@ -1,4 +1,4 @@
-@import './styles/bootstrap-custom.scss';
+@import "./styles/bootstrap-custom.scss";
 
 .App {
   text-align: center;
@@ -8,7 +8,6 @@ body {
   background-color: #ddecff;
   height: 95%;
 }
-
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -40,14 +39,14 @@ body {
   }
 }
 
-.app-header>.project-name{
+.app-header > .project-name {
   text-align: left;
   letter-spacing: 0;
   color: #000000;
   opacity: 1;
 }
 
-.app-header>.nav{
+.app-header > .nav {
   float: righnpmt;
 }
 
@@ -57,7 +56,7 @@ body {
   flex-direction: column;
 }
 
-.main-content{
+.main-content {
   display: flex;
 }
 
@@ -66,9 +65,9 @@ body {
   font-size: 24px;
 }
 
-.logoBar{
+.logoBar {
   background-color: #4784c5;
-  color:white;
+  color: white;
   padding: 5px;
   display: flex;
   justify-content: space-between;
@@ -113,13 +112,13 @@ body {
 
 .change-theme {
   font-size: 14px;
-  color: #9098A5;
+  color: #9098a5;
 }
 
-.components-list>p>a {
+.components-list > p > a {
   margin-left: 0.6em;
 }
-.components-list>p>img {
+.components-list > p > img {
   width: 1.25rem;
   height: 1.3125rem;
 }
@@ -134,7 +133,7 @@ body {
 .footer .links {
   text-align: left;
   letter-spacing: 0.33px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 700;
   opacity: 1;
 }
@@ -144,9 +143,9 @@ body {
   opacity: 0.2;
 }
 
-.copyright{
+.copyright {
   letter-spacing: 0.33px;
-  color: #FFFFFF;
+  color: #ffffff;
   opacity: 0.6;
 }
 
@@ -156,7 +155,8 @@ body {
   flex-direction: column;
 }
 
-.k-widget.k-dropdown, .k-list .k-item {
+.k-widget.k-dropdown,
+.k-list .k-item {
   text-transform: uppercase;
 }
 
@@ -185,7 +185,7 @@ body {
 //   max-width: 100%;
 // }
 
-.sideBar{
+.sideBar {
   width: fit-content;
 }
 
@@ -193,8 +193,7 @@ body {
   background-color: #4784c5;
 }
 
-
-.k-grid-header{
+.k-grid-header {
   background-color: #4784c5;
 }
 
@@ -202,10 +201,11 @@ body {
   background-color: #a3c1e1;
 }
 
-.k-grid .k-button, .k-grid .k-button:active {
-    box-shadow: none;
-    border-color: black;
-    border-width: thin;
+.k-grid .k-button,
+.k-grid .k-button:active {
+  box-shadow: none;
+  border-color: black;
+  border-width: thin;
 }
 
 .k-column-title {
@@ -213,7 +213,8 @@ body {
   overflow-wrap: break-word;
 }
 
-.k-button-primary, .k-button.k-primary {
+.k-button-primary,
+.k-button.k-primary {
   background-color: #a3c1e1;
   color: #000000;
 }
@@ -223,11 +224,26 @@ body {
 //    border-top-width:thick;
 // }
 
-.k-grid-header, .k-header, th.k-header, .k-grid-header-wrap, .k-grouping-header, .k-grouping-header .k-group-indicator, .k-grid td, .k-grid-footer, .k-grid-footer-wrap, .k-grid-content-locked, .k-grid-footer-locked, .k-grid-header-locked, .k-filter-row > td, .k-filter-row > th {
+.k-grid-header,
+.k-header,
+th.k-header,
+.k-grid-header-wrap,
+.k-grouping-header,
+.k-grouping-header .k-group-indicator,
+.k-grid td,
+.k-grid-footer,
+.k-grid-footer-wrap,
+.k-grid-content-locked,
+.k-grid-footer-locked,
+.k-grid-header-locked,
+.k-filter-row > td,
+.k-filter-row > th {
   border-color: #00000038;
 }
 
-.k-toolbar .k-button-primary, .k-toolbar .k-button.k-primary, .k-toolbar .k-button.k-primary {
+.k-toolbar .k-button-primary,
+.k-toolbar .k-button.k-primary,
+.k-toolbar .k-button.k-primary {
   background-color: #a3c1e1;
 }
 
@@ -263,10 +279,10 @@ td.rightAlign {
   text-align: right;
 }
 
-.k-button-primary, .k-button.k-primary {
+.k-button-primary,
+.k-button.k-primary {
   width: 100px;
 }
-
 
 .vl {
   border-left: 1px solid #0000004a;
