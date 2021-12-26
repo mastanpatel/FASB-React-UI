@@ -131,7 +131,7 @@ const Inventory = (props) => {
                                 className="k-button"
                                 onClick={cancelCurrentChanges}
                             >
-                                Cancel current changes
+                                Cancel current changes1
                             </button>
                         )}
                     </GridToolbar>
