@@ -4,6 +4,7 @@ import { MyCommandCell } from './myCommandCell.jsx';
 import { Grid, GridColumn as Column, GridToolbar } from '@progress/kendo-react-grid';
 import { process } from '@progress/kendo-data-query';
 import { sampleInventory } from '../common/sample-inventory';
+import { ExcelExport } from "@progress/kendo-react-excel-export";
 
 const Inventory = (props) => {
     const editField = "inEdit";
@@ -11,7 +12,13 @@ const Inventory = (props) => {
     const [dataState, setDataState] = useState({ skip: 0, take: 10 })
 
     const generateId = data => data.reduce((acc, current) => Math.max(acc, current.FASBInventoryID), 0) + 1;
+    const _export = React.useRef(null);
 
+    const excelExport = () => {
+      if (_export.current !== null) {
+        _export.current.save();
+      }
+    };
     const removeItem = (data, item) => {
         let index = data.findIndex(p => p === item || item.FASBInventoryID && p.FASBInventoryID === item.FASBInventoryID);
         if (index >= 0) {
@@ -106,6 +113,8 @@ const Inventory = (props) => {
     return (
         <div className="container-fluid">
             <div className='row my-4'>
+            
+            <ExcelExport data={sampleInventory} ref={_export}>
                 {/* <div className='col-12 col-lg-9 border-right'> */}
                 <Grid
                     data={process(data, dataState)}
@@ -117,14 +126,15 @@ const Inventory = (props) => {
                     onDataStateChange={(e) => setDataState(e.dataState)} // uncomment to enable data operations
                     {...dataState} // uncomment to enable data operations
                 >
+
                     <GridToolbar>
-                        <button
-                            title="Add new"
-                            className="k-button k-primary"
-                            onClick={addNew}
-                        >
-                            Add new
-                        </button>
+                    <button
+                        title="Export Excel"
+                        className="k-button k-primary"
+                        onClick={excelExport}
+                    >
+                        Export to Excel
+                    </button>
                         {hasEditedItem && (
                             <button
                                 title="Cancel current changes"
@@ -135,17 +145,7 @@ const Inventory = (props) => {
                             </button>
                         )}
                     </GridToolbar>
-                    {/* <Column field="ProductID" title="Id" width="50px" editable={false} />
-                        <Column field="ProductName" title="Product Name" width="250px"/>
-                        <Column field="UnitsInStock" title="Units" width="150px" editor="numeric" />
-                        <Column field="Discontinued" title="Discontinued" editor="boolean" />
-                        <Column cell={CommandCell} width="240px" /> */}
-                    {/* <Column field="FASBInventoryID" title="FASBInventoryID"/>
-                        <Column field="QuarterID" title="QuarterID"/>
-                        <Column field="QuarterName" title="QuarterName"/>
-                        <Column field="StartDate" title="StartDate"/>
-                        <Column field="EndDate" title="EndDate"/>
-                        <Column field="CCTrackingDealID" title="CCTrackingDealID"/>*/}
+                   
                     <Column field="longDealName" title="Deal Name" width="190px" />
                     <Column field="CurrentControllingClass" title="Class" width="80px" />
                     <Column field="CurrentControllingCusip" title="Cusip" />
@@ -175,71 +175,9 @@ const Inventory = (props) => {
                     <Column field="CreatedBy" title="CreatedBy" />
                     <Column field="ModifyTimeStamp" title="ModifyTimeStamp" />
                     <Column field="ModifiedBy" title="ModifiedBy" />
-                    {/* <Column field="DealID" title="DealID"/>
-                        <Column field="longDealName" title="longDealName"/>
-                        <Column field="TreppDealName" title="TreppDealName"/>
-                        <Column field="DealVintage" title="DealVintage"/>
-                        <Column field="CMBSType" title="CMBSType"/>
-                        <Column field="Cusip" title="Cusip"/>
-                        <Column field="Class" title="Class"/>
-                        <Column field="OriginalRating" title="OriginalRating"/>
-                        <Column field="AdditionalbondDescription" title="AdditionalbondDescription"/>
-                        <Column field="DoesBondNeedToBePriced" title="DoesBondNeedToBePriced"/>
-                        <Column field="OriginalBalance" title="OriginalBalance"/>
-                        <Column field="CurrentBalance" title="CurrentBalance"/>
-                        <Column field="SuggestedCurrentBalance" title="SuggestedCurrentBalance"/>
-                        <Column field="CurrentBalaneChangeComment" title="CurrentBalaneChangeComment"/>
-                        <Column field="SuggestedCurrentBalanceTimestamp" title="SuggestedCurrentBalanceTimestamp"/>
-                        <Column field="EffectiveBalance" title="EffectiveBalance"/>
-                        <Column field="QuarterFirstMonthCurrentBalance" title="QuarterFirstMonthCurrentBalance"/>
-                        <Column field="SubOrdination" title="SubOrdination"/>
-                        <Column field="Coupon" title="Coupon"/>
-                        <Column field="RatedMaturity" title="RatedMaturity"/>
-                        <Column field="ControllingClassCusip" title="ControllingClassCusip"/>
-                        <Column field="SpecialServicer" title="SpecialServicer"/>
-                        <Column field="ConsolidatedInLastQuarter" title="ConsolidatedInLastQuarter"/>
-                        <Column field="MadisonOwnershipPct" title="MadisonOwnershipPct"/>
-                        <Column field="CDO2002OwnershipPct" title="CDO2002OwnershipPct"/>
-                        <Column field="CDO2003OwnershipPct" title="CDO2003OwnershipPct"/>
-                        <Column field="CDO2005OwnershipPct" title="CDO2005OwnershipPct"/>
-                        <Column field="CDO2006OwnershipPct" title="CDO2006OwnershipPct"/>
-                        <Column field="CDO2007OwnershipPct" title="CDO2007OwnershipPct"/>
-                        <Column field="LNROwnershipPct" title="LNROwnershipPct"/>
-                        <Column field="ThirdPartyOwnershipPct" title="ThirdPartyOwnershipPct"/>
-                        <Column field="LNRPrice" title="LNRPrice"/>
-                        <Column field="LNRPriceTimetamp" title="LNRPriceTimetamp"/>
-                        <Column field="IsVRR" title="IsVRR"/>
-                        <Column field="VRRPrice" title="VRRPrice"/>
-                        <Column field="TreppCMBSFeedDate" title="TreppCMBSFeedDate"/>
-                        <Column field="TreppPrice" title="TreppPrice"/>
-                        <Column field="TreppSpread" title="TreppSpread"/>
-                        <Column field="IsIO" title="IsIO"/>
-                        <Column field="IsWACIO" title="IsWACIO"/>
-                        <Column field="WACIOPrice" title="WACIOPrice"/>
-                        <Column field="AverageVintageSpread" title="AverageVintageSpread"/>
-                        <Column field="AverageVintagePrice" title="AverageVintagePrice"/>
-                        <Column field="DCFPrice" title="DCFPrice"/>
-                        <Column field="BusinessRuleApplied" title="BusinessRuleApplied"/>
-                        <Column field="BusinessRuleApplyTimeStamp" title="BusinessRuleApplyTimeStamp"/>
-                        <Column field="FinalPrice" title="FinalPrice"/>
-                        <Column field="SuggestedPRice" title="SuggestedPRice"/>
-                        <Column field="FASBLevel" title="FASBLevel"/>
-                        <Column field="IsPEZ" title="IsPEZ"/>
-                        <Column field="LevelUpdatedBy" title="LevelUpdatedBy"/>
-                        <Column field="LevelUpdateTimeStamp" title="LevelUpdateTimeStamp"/>
-                        <Column field="Comment" title="Comment"/>
-                        <Column field="Yield" title="Yield"/>
-                        <Column field="Duration" title="Duration"/>
-                        <Column field="WAL" title="WAL"/>
-                        <Column field="SuggestedPriceUpdateTimestamp" title="SuggestedPriceUpdateTimestamp"/>
-                        <Column field="IsNonTreppBond" title="IsNonTreppBond"/>
-                        <Column field="CreateTimeStamp" title="CreateTimeStamp"/>
-                        <Column field="CreatedBy" title="CreatedBy"/>
-                        <Column field="ModifyTimeStamp" title="ModifyTimeStamp"/>
-                        <Column field="ModifiedBy" title="ModifiedBy"/>
-                        <Column field="CapitalStructurePosition" title="CapitalStructurePosition"/> */}
-
+                    
                 </Grid>
+                </ExcelExport>
             </div>
             {/*                
             </div> */}
