@@ -298,3 +298,7 @@ td.rightAlign {
 .grid-blur {
   filter: contrast(0.5);
 }
+.k-grid .k-edit-cell, .k-grid .k-command-cell, .k-grid .k-grid-edit-row td {
+  padding: inherit;
+  text-overflow: clip;
+}
