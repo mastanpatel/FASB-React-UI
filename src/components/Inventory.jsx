@@ -4,6 +4,7 @@ import { InventoryCommandCell } from './InventoryCommandCell.jsx';
 import { insertItem, getItems, updateItem } from "../services/Service";
 import { sampleInventory } from '../common/sample-inventory';
 import { ExcelExport } from "@progress/kendo-react-excel-export";
+import { process } from '@progress/kendo-data-query';
 
 
 const editField = "inEdit";
@@ -96,19 +97,24 @@ const update = (dataItem) => {
   );
   
   return (
+      
     <div className='row my-4'>
             
     <ExcelExport data={sampleInventory} ref={_export}>
     <Grid
+    
       style={{
-        height: "500px",
+        height: "600px",
         // width : "700px"
       }}
-      pageable 
+      
+      
+      
       onDataStateChange={(e) => setDataState(e.dataState)}
         {...dataState}
-      data={data}
-      onItemChange={itemChange}
+        data={process(data, dataState)}
+      pageable 
+     onItemChange={itemChange}
       editField={editField}
     >
         
