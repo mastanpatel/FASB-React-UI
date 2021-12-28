@@ -31,7 +31,7 @@ export const InventoryCommandCell = (props) => {
       >
         Edit
       </button>
-      <button
+      {/* <button
         className="k-button k-grid-remove-command"
         onClick={() =>
           window.confirm("Confirm deleting: " + dataItem.ProductName) &&
@@ -39,7 +39,7 @@ export const InventoryCommandCell = (props) => {
         }
       >
         Remove
-      </button>
+      </button> */}
     </td>
   );
 };

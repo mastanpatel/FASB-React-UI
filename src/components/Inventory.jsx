@@ -1,8 +1,10 @@
 import React, { useState} from 'react';
 import { Grid, GridColumn as Column, GridToolbar } from "@progress/kendo-react-grid";
 import { InventoryCommandCell } from './InventoryCommandCell.jsx';
-import { insertItem, getItems, updateItem, deleteItem } from "../services/Service";
+import { insertItem, getItems, updateItem } from "../services/Service";
 import { sampleInventory } from '../common/sample-inventory';
+import { ExcelExport } from "@progress/kendo-react-excel-export";
+
 
 const editField = "inEdit";
 
@@ -10,16 +12,23 @@ const editField = "inEdit";
 const Inventory = () => {
 const [data, setData] = React.useState([]);
 const [dataState, setDataState] = useState({ skip: 0, take: 10 })
-
+const _export = React.useRef(null);
+    const excelExport = () => {
+      if (_export.current !== null) {
+        _export.current.save();
+      }
+    };
+    
 React.useEffect(() => {
   let newItems = getItems();
   setData(newItems);
 }, []); // modify the data in the store, db etc
 
-const remove = (dataItem) => {
-  const newData = deleteItem(dataItem);
-  setData(newData);
-};
+
+// const remove = (dataItem) => {
+//   const newData = deleteItem(dataItem);
+//   setData(newData);
+// };
 
 const add = (dataItem) => {
   dataItem.inEdit = true;
@@ -64,20 +73,20 @@ const update = (dataItem) => {
     );
     setData(newData);
   };
-  const addNew = () => {
-    const newDataItem = {
-      inEdit: true,
-      Discontinued: false,
-    };
-    setData([newDataItem, ...data]);
-  };
+//   const addNew = () => {
+//     const newDataItem = {
+//       inEdit: true,
+//       Discontinued: false,
+//     };
+//     setData([newDataItem, ...data]);
+//   };
 
 
   const CommandCell = (props) => (
     <InventoryCommandCell
       {...props}
       edit={enterEdit}
-      remove={remove}
+    //   remove={remove}
       add={add}
       discard={discard}
       update={update}
@@ -87,6 +96,9 @@ const update = (dataItem) => {
   );
   
   return (
+    <div className='row my-4'>
+            
+    <ExcelExport data={sampleInventory} ref={_export}>
     <Grid
       style={{
         height: "500px",
@@ -101,9 +113,13 @@ const update = (dataItem) => {
     >
         
         <GridToolbar>
-        <button title="Add new" className="k-button k-primary" onClick={addNew}>
-          Add new
-        </button>
+        <button
+                        title="Export Excel"
+                        className="k-button k-primary"
+                        onClick={excelExport}
+                    >
+                        Export to Excel
+                    </button>
       </GridToolbar>
       <Column field="longDealName" title="Deal Name" width="190px" />
                     <Column field="CurrentControllingClass" title="Class" width="80px" />
@@ -125,11 +141,13 @@ const update = (dataItem) => {
                     <Column field="CurrentControllingClass" title="Class" width="80px" />
                     <Column field="CurrentControllingCusip" title="Cusip" />
                     <Column field="Consolidate" title="Consolidate" width="80px" />
-
+                    
                     <Column cell={CommandCell} width="200px" />
 
-
+      
     </Grid>
+    </ExcelExport>
+    </div>
   );
     
     }
