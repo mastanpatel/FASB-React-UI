@@ -9,7 +9,7 @@ export function MyCommandCell({ edit, remove, add, update, discard, cancel, edit
             const isNewItem = dataItem.QuarterID === undefined;
             //const isNewItem = false;
 
-            return inEdit ? (
+            return inEdit ? (  
                 <td className="k-command-cell">
                     <button
                         className="k-button k-grid-save-command"
@@ -32,14 +32,14 @@ export function MyCommandCell({ edit, remove, add, update, discard, cancel, edit
                     >
                         Edit
                     </button>
-                    {/* <button
+                    <button
                         className="k-button k-grid-remove-command"
                         onClick={() =>
                             remove(dataItem)
                         }
                     >
                         Remove
-                    </button> */}
+                    </button>
                 </td>
             );
         }

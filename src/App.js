@@ -10,6 +10,8 @@ import InputWizard from "./components/InputWizard";
 import Inventory from "./components/Inventory";
 import Control from "./components/Control";
 import Reports from "./components/Reports";
+
+
 function App() {
   return (
     <Router>
@@ -35,6 +37,7 @@ function App() {
             <Route path = "/Inventory" component={Inventory} />
             <Route path = "/Control" component={Control} />
             <Route path = "/Reports" component={Reports} />
+           
           </div>
         </div>
         <div className="footer">
