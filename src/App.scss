@@ -71,6 +71,7 @@ body {
   padding: 5px;
   display: flex;
   justify-content: space-between;
+  width : 1500px;
 }
 .welcome {
   text-align: center;
@@ -119,7 +120,7 @@ body {
   margin-left: 0.6em;
 }
 .components-list > p > img {
-  width: 1.25rem;
+  width: 1.25%;
   height: 1.3125rem;
 }
 .footer {
@@ -247,13 +248,13 @@ th.k-header,
   background-color: #a3c1e1;
 }
 
-// .k-grid-table {
-//   width: 100%;
-// }
+ .k-grid-table {
+   width: 100%;
+ }
 
-// .k-grid{
-//   width: 100%;
-// }
+  .k-grid{
+    width: 100%;
+  }
 
 .k-cell-inner > .k-link {
   padding: 9px 9px;
@@ -261,6 +262,7 @@ th.k-header,
 
 .k-button {
   text-transform: none;
+   
 }
 
 .k-cell-inner > .k-link {
@@ -301,4 +303,29 @@ td.rightAlign {
 .k-grid .k-edit-cell, .k-grid .k-command-cell, .k-grid .k-grid-edit-row td {
   padding: inherit;
   text-overflow: clip;
+}
+.k-grid-edit-command{
+  padding: 8px;
+}
+.gridcell{
+  text-align: center;
+}
+.k-grid-edit-row td {
+  text-align: center;
+}
+.k-upload{
+  width: 25%;
+  height: 70px;
+  text-align: right;
+}
+.export-btn{
+  border-radius: 10%;
+  background-color: lightcoral;
+  position: absolute;
+  right: 0;
+  width: 10%;
+  height: 30px;
+}
+.k-button{
+  background-color: burlywood;
 }

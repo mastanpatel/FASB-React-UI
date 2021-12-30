@@ -5,6 +5,7 @@ import { insertItem, getItems, updateItem } from "../services/Service";
 import { sampleInventory } from '../common/sample-inventory';
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { process } from '@progress/kendo-data-query';
+import { Upload } from "@progress/kendo-react-upload";
 
 
 const editField = "inEdit";
@@ -101,6 +102,7 @@ const update = (dataItem) => {
     <div className='row my-4'>
             
     <ExcelExport data={sampleInventory} ref={_export}>
+    
     <Grid
     
       style={{
@@ -119,37 +121,33 @@ const update = (dataItem) => {
     >
         
         <GridToolbar>
-        <button
-                        title="Export Excel"
-                        className="k-button k-primary"
+        <Upload
+      batch={false}
+      multiple={true}
+      defaultFiles={[]}
+      withCredentials={false}
+      saveUrl={"https://demos.telerik.com/kendo-ui/service-v4/upload/save"}
+      removeUrl={"https://demos.telerik.com/kendo-ui/service-v4/upload/remove"}
+    ></Upload>
+        <button className = "export-btn"
+                        title="Export Excel" 
+                        // className="k-button k-primary"
                         onClick={excelExport}
                     >
                         Export to Excel
                     </button>
-      </GridToolbar>
-      <Column field="longDealName" title="Deal Name" width="190px" />
-                    <Column field="CurrentControllingClass" title="Class" width="80px" />
-                    <Column field="CurrentControllingCusip" title="Cusip" />
-                    <Column field="Consolidate" title="Consolidate" width="150px" />
-                    {/* <Column
-
-    //field="Rules"
-    // title="Edit"
-    width="150px" */}
-      
-      {/* <Column
-        field="Un"
-        width="120px"itsInStock"
-        title="Units
-        editor="numeric"
-      /> */}
-      <Column field="longDealName" title="Deal Name" width="190px" />
-                    <Column field="CurrentControllingClass" title="Class" width="80px" />
-                    <Column field="CurrentControllingCusip" title="Cusip" />
-                    <Column field="Consolidate" title="Consolidate" width="80px" />
                     
-                    <Column cell={CommandCell} width="200px" />
-
+      </GridToolbar>
+            <Column field="longDealName" title="Deal Name" width="190px" />
+            <Column field="CurrentControllingClass" title="Class" width="80px" />
+            <Column field="CurrentControllingCusip" title="Cusip"  />
+            <Column field="Consolidate" title="Consolidate" width="110px"  />
+            <Column field="Comment" title="Comment" width="100px" />
+            <Column field="CreatedBy" title="Created By" width="190px" />
+            <Column field="CreateTimeStamp" title="Create Time Stamp" width="150px" />
+            <Column field="ModifiedBy" title="Modified By" width="150px" />
+            <Column field="ModifyTimeStamp" title="Modify Time Stamp" width="150px" />
+            <Column cell={CommandCell} width="200px" />
       
     </Grid>
     </ExcelExport>
