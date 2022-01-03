@@ -10,7 +10,7 @@ import { sampleInventory } from "../common/sample-inventory";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { process } from "@progress/kendo-data-query";
 import { Upload } from "@progress/kendo-react-upload";
-
+import { Link } from "react-router-dom";
 const editField = "inEdit";
 
 const Inventory = () => {
@@ -101,6 +101,10 @@ const Inventory = () => {
     />
   );
 
+  // const downloadFile = () => {
+  //   window.location.href = "./";
+  // };
+
   return (
     <div className="row my-4">
       <ExcelExport data={sampleInventory} ref={_export}>
@@ -117,6 +121,19 @@ const Inventory = () => {
           editField={editField}
         >
           <GridToolbar>
+            {/* <a href="../src/contents/sample.txt" download>
+              Click to download
+            </a> */}
+            {/* <button onClick={downloadFile} /> */}
+
+            <Link
+              to="/contents/Inventory-Template.xlsx"
+              target="_blank"
+              download
+            >
+              Download
+            </Link>
+
             <Upload
               batch={false}
               multiple={false}
