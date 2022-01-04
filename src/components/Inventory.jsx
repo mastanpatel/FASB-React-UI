@@ -125,13 +125,14 @@ const Inventory = () => {
               Click to download
             </a> */}
             {/* <button onClick={downloadFile} /> */}
-
+            
             <Link
               to="/contents/Inventory-Template.xlsx"
               target="_blank"
               download
             >
-              Download
+              <button className="download-btn">Download</button>
+              
             </Link>
 
             <Upload

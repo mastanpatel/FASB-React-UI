@@ -315,18 +315,49 @@ td.rightAlign {
   text-align: center;
 }
 .k-upload {
-  width: 25%;
-  height: 70px;
+  //width: 25%;
+  //height: 70px;
   text-align: right;
+  background-color:  #4784c5;
+}
+
+.k-upload .k-dropzone{
+  padding: 0;
 }
 .export-btn {
-  border-radius: 10%;
-  background-color: lightcoral;
+  //border-radius:14px ;
+  background-color:  #4784c5;
   position: absolute;
   right: 0;
-  width: 10%;
-  height: 30px;
+  width: 18vh;
+  height: 5vh;
+  border-width: thin;
+  border-color: black;
+  margin-right: 50px;
 }
 .k-button {
-  background-color: burlywood;
+  background-color: #4784c5;
+  padding: 5px ;
+}
+
+.k-widget .k-upload .k-dropzone {
+  border-color: cornflowerblue;
+  background-color:  #4784c5;
+}
+.download-btn{
+  background-color:  #4784c5;
+  border-width: thin;
+  border-color: black;
+  width: 15vh;
+  height: 5vh;
+}
+.k-upload .k-dropzone .k-dropzone-hint{
+  display: none;
+}
+.k-grid .k-button{
+  background-color:  #4784c5;
+}
+.k-button .k-upload-button {
+ 
+  margin-right: 2px;
 }
